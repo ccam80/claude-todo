@@ -1,0 +1,26 @@
+{
+  "name": "claude-todo-marketplace",
+  "metadata": {
+    "description": "Lightweight todo list management skills - add, remove, checkin, checkout tasks and add plans and references to each task.",
+    "version": "0.1.0",
+    "homepage": "https://github.com/ccam80/claude-todo"
+  },
+  "owner": {
+    "name": "Chris Cameron"
+  },
+  "plugins": [
+    {
+      "name": "claude-todo",
+      "description": "Collection of todo list management skills",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/todo",
+        "./skills/todo-add",
+        "./skills/todo-remove",
+        "./skills/todo-checkin",
+        "./skills/todo-checkout"
+      ]
+    }
+  ]
+}
