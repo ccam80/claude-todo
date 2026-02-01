@@ -5,29 +5,61 @@ A lightweight task management plugin for Claude Code sessions.
 ## Using it
 Want to see what's on your todo list?
 ```
-  /todo
+> /todo
 ```
-Claude will print a numbered list of items and descriptions, and whether those items have a current plan.md file created.
-
-Have an idea while you're working on something else? Tell Claude about it. Don't worry about format, just describe the task, Claude will interpret it. If you don't provide a directory that the project is in, Claude will ask you for it. It will also offer to read all of the reference info it has and make a plan for the job, which you can accept if you want it to do some beginning legwork:
 ```
-/todo-add add [feature] to my other project.
-```
-
-Have an idea about a running todo item that you don't want to forget? Checkout the task, make the change, check it back in.
-
-```
-\todo-checkout 2    #or
-\todo-checkout the task about that feature I wanted
-
-Do some research on how we can interface with [x]. Create a concrete specification for the interface that agents can use later to design our code
-
-\todo-checkin
+ #  Task                                 Dir                        Plan  Status
+ 1  Add CSV export to dashboard          C:/projects/analytics      ✓     Active
+ 2  Fix auth timeout on mobile           C:/projects/mobile-app     —     Active
+ 3  Migrate user table to new schema     C:/projects/backend        ✓     Active
 ```
 
-Done? 
+Have an idea while you're working on something else? Tell Claude about it. Don't worry about format, just describe the task. If you don't provide a directory, Claude will ask. It will also offer to read your project and make a plan:
 ```
-\todo-remove 2
+> /todo-add Add retry logic to the payment webhook handler in the backend project
+```
+```
+Added task #4: "Add Retry Logic to Payment Webhook Handler"
+  Directory: C:/projects/backend
+
+Want me to read the codebase and draft a plan for this task? (y/n)
+```
+
+Have an idea about a running todo item? Check it out, do some work, check it back in:
+
+```
+> /todo-checkout 1
+```
+```
+Loaded task #1: Add CSV export to dashboard
+  Directory: C:/projects/analytics
+  Plan: Read — last updated 2 sessions ago.
+
+Current plan summary:
+  - Add "Export CSV" button to report toolbar
+  - Use papaparse for serialisation
+  - Stream large datasets via Blob URL
+
+Ready to work on this task.
+```
+```
+> Actually, we also need to support Excel .xlsx. Update the plan to use the
+  SheetJS library so we can offer both CSV and XLSX from the same button.
+
+> /todo-checkin
+```
+```
+Checked in task #1. Updated plan.md with:
+  - Switched from papaparse to SheetJS for dual CSV/XLSX support
+  - Added format selector dropdown to export button spec
+```
+
+Done?
+```
+> /todo-remove 2
+```
+```
+Marked task #2 (Fix auth timeout on mobile) as complete and removed.
 ```
 
 ## Skills
