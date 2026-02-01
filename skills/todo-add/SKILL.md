@@ -4,7 +4,9 @@ description: Add a new task to the master todo list
 argument-hint: <task description>
 ---
 
-Add a new task to `C:\Users\cca79\.claude\todo.md`.
+First, resolve the user's home directory by running `echo $HOME` via Bash. The todo file is at `<home>/.claude/todo.md`. The plan directories live under `<home>/.claude/todo/`.
+
+Add a new task to the todo file.
 
 Use $ARGUMENTS as the task description. If no arguments provided, ask the user what task to add.
 
@@ -20,11 +22,11 @@ To determine the next task number, read the file and find the highest existing `
 
 ```markdown
 ### N. Task Title
-- **Directory**: `C:/path/to/directory`
+- **Directory**: `/path/to/directory`
 - **Description**:
   - Detail lines...
 ```
 
-After adding the task, ask the user if they'd like to create an initial plan for it. If yes, create the directory `C:\Users\cca79\.claude\todo\<N>\` and a `plan.md` with the task description and any initial notes.
+After adding the task, ask the user if they'd like to create an initial plan for it. If yes, create the directory `<home>/.claude/todo/<N>/` and a `plan.md` with the task description and any initial notes.
 
 Confirm what was added.

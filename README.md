@@ -2,16 +2,26 @@
 
 A lightweight task management plugin for Claude Code sessions.
 
-## Using it
+## Installation
+
+Install via the Claude Code plugins interface:
+
+1. Open Claude Code
+2. Run `/install-plugin https://github.com/ccam80/claude-todo`
+
+That's it. The `/todo` commands are now available in all your sessions.
+
+## Usage
+
 Want to see what's on your todo list?
 ```
 > /todo
 ```
 ```
  #  Task                                 Dir                        Plan  Status
- 1  Add CSV export to dashboard          C:/projects/analytics      ✓     Active
- 2  Fix auth timeout on mobile           C:/projects/mobile-app     —     Active
- 3  Migrate user table to new schema     C:/projects/backend        ✓     Active
+ 1  Add CSV export to dashboard          ~/projects/analytics       ✓     Active
+ 2  Fix auth timeout on mobile           ~/projects/mobile-app      —     Active
+ 3  Migrate user table to new schema     ~/projects/backend         ✓     Active
 ```
 
 Have an idea while you're working on something else? Tell Claude about it. Don't worry about format, just describe the task. If you don't provide a directory, Claude will ask. It will also offer to read your project and make a plan:
@@ -20,7 +30,7 @@ Have an idea while you're working on something else? Tell Claude about it. Don't
 ```
 ```
 Added task #4: "Add Retry Logic to Payment Webhook Handler"
-  Directory: C:/projects/backend
+  Directory: ~/projects/backend
 
 Want me to read the codebase and draft a plan for this task? (y/n)
 ```
@@ -32,7 +42,7 @@ Have an idea about a running todo item? Check it out, do some work, check it bac
 ```
 ```
 Loaded task #1: Add CSV export to dashboard
-  Directory: C:/projects/analytics
+  Directory: ~/projects/analytics
   Plan: Read — last updated 2 sessions ago.
 
 Current plan summary:
@@ -72,17 +82,9 @@ Marked task #2 (Fix auth timeout on mobile) as complete and removed.
 | `/todo-checkout <number>` | Load a task's description and plan for the current session |
 | `/todo-checkin <number>` | Save session progress back to the task's plan directory |
 
-## Setup
-
-Add to your Claude Code settings (`.claude/settings.json`):
-
-```json
-{
-  "plugins": ["C:/local_working_projects/todo"]
-}
-```
-
 ## Data
 
-- **Task list**: `C:\Users\cca79\.claude\todo.md` — master file with summary table and full task entries
-- **Plan directories**: `C:\Users\cca79\.claude\todo\<N>\` — per-task plan files and working documents
+All data is stored under your user-level Claude config directory (`~/.claude/` — this is wherever your Claude Code user configuration lives, e.g. `C:\Users\<you>\.claude\` on Windows or `~/.claude/` on macOS/Linux).
+
+- **Task list**: `~/.claude/todo.md` — master file with summary table and full task entries
+- **Plan directories**: `~/.claude/todo/<N>/` — per-task plan files and working documents
